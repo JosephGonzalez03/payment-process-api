@@ -1,4 +1,4 @@
-package com.nerd.paymentprocessapi;
+package com.nerd.PaymentProcessApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
