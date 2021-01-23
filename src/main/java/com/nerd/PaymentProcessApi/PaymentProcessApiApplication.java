@@ -1,4 +1,4 @@
-package com.nerd.paymentprocessapi;
+package com.nerd.PaymentProcessApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
