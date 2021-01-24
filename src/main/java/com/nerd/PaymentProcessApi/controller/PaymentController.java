@@ -6,13 +6,14 @@ import com.nerd.PaymentProcessApi.model.contract.OrderBy;
 import com.nerd.PaymentProcessApi.model.contract.PaymentSummariesOperation;
 import com.nerd.PaymentProcessApi.model.contract.PaymentSummary;
 import com.nerd.PaymentProcessApi.model.provider.Loan;
+import com.nerd.PaymentProcessApi.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,9 @@ public class PaymentController {
 
     @Autowired
     RestTemplateConfiguration restTemplateConfiguration;
+
+    @Autowired
+    PaymentService paymentService;
 
     @GetMapping(value = "/paymentSummaries", produces = "application/json")
     public ResponseEntity<List<PaymentSummary>> getAllPaymentSummaries(
@@ -33,7 +37,7 @@ public class PaymentController {
 
         ResponseEntity<Loan[]> orderedLoans = loanSystemApi.getForEntity("/users/1/loans?orderBy={orderBy}", Loan[].class, orderBy);
 
-        List<PaymentSummary> paymentSummaryResponseBodies = new ArrayList<>();
+        List<PaymentSummary> paymentSummaryResponseBodies = paymentService.getPaymentSummaries(Arrays.asList(orderedLoans.getBody()));
         return new ResponseEntity<>(paymentSummaryResponseBodies, HttpStatus.OK);
     }
 }
