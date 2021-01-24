@@ -1,2 +1,11 @@
 server:
-  port: 9080
+  port: "8090"
+  servlet:
+    context-path: "/paymentms"
+
+providers:
+  loan-system-api:
+    protocol: "https"
+    host: "31418c73-a5d9-44de-b75b-aa15d92b6199.mock.pstmn.io"
+    port: "443"
+    basePath: ""
