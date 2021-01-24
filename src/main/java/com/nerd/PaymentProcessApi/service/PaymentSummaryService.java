@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PaymentService {
+public class PaymentSummaryService {
 
     private void makeMonthlyPayment(Loan loan) {
         BigDecimal currentAmount = loan.getOutstandingBalance(),

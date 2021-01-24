@@ -6,7 +6,7 @@ import com.nerd.PaymentProcessApi.model.contract.OrderBy;
 import com.nerd.PaymentProcessApi.model.contract.PaymentSummariesOperation;
 import com.nerd.PaymentProcessApi.model.contract.PaymentSummary;
 import com.nerd.PaymentProcessApi.model.provider.Loan;
-import com.nerd.PaymentProcessApi.service.PaymentService;
+import com.nerd.PaymentProcessApi.service.PaymentSummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class PaymentSummaryController {
     RestTemplateConfiguration restTemplateConfiguration;
 
     @Autowired
-    PaymentService paymentService;
+    PaymentSummaryService paymentService;
 
     @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<List<PaymentSummary>> getAllPaymentSummaries(
