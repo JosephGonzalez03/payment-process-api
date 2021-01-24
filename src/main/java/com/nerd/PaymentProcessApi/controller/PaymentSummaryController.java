@@ -35,12 +35,11 @@ public class PaymentSummaryController {
     {
         HttpProperties properties = restTemplateConfiguration.loanSystemApiProperties();
         RestTemplate loanSystemApi = restTemplateConfiguration.restTemplate(properties);
-        ResponseEntity<Loan[]> orderedLoans;
         List<PaymentSummary> paymentSummaryResponseBodies = new ArrayList<>();
 
         switch (operation) {
             case FORECAST:
-                orderedLoans = loanSystemApi.getForEntity("/users/{userId}/loans?orderBy={orderBy}", Loan[].class, userId, orderBy);
+                ResponseEntity<Loan[]> orderedLoans = loanSystemApi.getForEntity("/users/{userId}/loans?orderBy={orderBy}", Loan[].class, userId, orderBy);
                 paymentSummaryResponseBodies = paymentService.getPaymentSummaries(Arrays.asList(orderedLoans.getBody()));
                 break;
             default:
