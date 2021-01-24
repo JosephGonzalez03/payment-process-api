@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,10 +35,18 @@ public class PaymentController {
     {
         HttpProperties properties = restTemplateConfiguration.loanSystemApiProperties();
         RestTemplate loanSystemApi = restTemplateConfiguration.restTemplate(properties);
+        ResponseEntity<Loan[]> orderedLoans;
+        List<PaymentSummary> paymentSummaryResponseBodies = new ArrayList<>();
 
-        ResponseEntity<Loan[]> orderedLoans = loanSystemApi.getForEntity("/users/1/loans?orderBy={orderBy}", Loan[].class, orderBy);
+        switch (operation) {
+            case FORECAST:
+                orderedLoans = loanSystemApi.getForEntity("/users/{userId}/loans?orderBy={orderBy}", Loan[].class, userId, orderBy);
+                paymentSummaryResponseBodies = paymentService.getPaymentSummaries(Arrays.asList(orderedLoans.getBody()));
+                break;
+            default:
+                break;
+        }
 
-        List<PaymentSummary> paymentSummaryResponseBodies = paymentService.getPaymentSummaries(Arrays.asList(orderedLoans.getBody()));
         return new ResponseEntity<>(paymentSummaryResponseBodies, HttpStatus.OK);
     }
 }
