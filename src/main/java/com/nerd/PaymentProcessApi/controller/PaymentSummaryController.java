@@ -18,8 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("users/{userId}")
-public class PaymentController {
+@RequestMapping("users/{userId}/paymentSummaries")
+public class PaymentSummaryController {
 
     @Autowired
     RestTemplateConfiguration restTemplateConfiguration;
@@ -27,7 +27,7 @@ public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
-    @GetMapping(value = "/paymentSummaries", produces = "application/json")
+    @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<List<PaymentSummary>> getAllPaymentSummaries(
             @PathVariable Integer userId,
             @RequestParam PaymentSummariesOperation operation,
