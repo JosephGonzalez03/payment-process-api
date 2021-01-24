@@ -5,7 +5,13 @@ server:
 
 providers:
   loan-system-api:
-    protocol: "https"
-    host: "31418c73-a5d9-44de-b75b-aa15d92b6199.mock.pstmn.io"
-    port: "443"
-    basePath: ""
+    local:
+      protocol: "http"
+      host: "localhost"
+      port: "8090"
+      basePath: "/loanms"
+    mock:
+      protocol: "https"
+      host: "31418c73-a5d9-44de-b75b-aa15d92b6199.mock.pstmn.io"
+      port: "443"
+      basePath: ""
