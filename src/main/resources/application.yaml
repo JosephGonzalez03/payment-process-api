@@ -12,6 +12,6 @@ providers:
       basePath: "/loanms"
     mock:
       protocol: "https"
-      host: "31418c73-a5d9-44de-b75b-aa15d92b6199.mock.pstmn.io"
+      host: "9d852ed9-df52-4955-8ad7-12fd47d331b1.mock.pstmn.io"
       port: "443"
       basePath: ""
