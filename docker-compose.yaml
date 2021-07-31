@@ -24,6 +24,8 @@ services:
     build:
       context: .
     image: payment-process-api:0.0.1-SNAPSHOT
+    environment:
+      LOAN_SYSTEM_API_HOST: "loan-system-api"
     depends_on:
       - loan-system-api
     ports:

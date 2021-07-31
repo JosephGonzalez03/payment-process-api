@@ -7,7 +7,7 @@ providers:
   loan-system-api:
     local:
       protocol: "http"
-      host: "loan-system-api"
+      host: "${LOAN_SYSTEM_API_HOST}"
       port: "8090"
       basePath: "/loanms"
     mock:
