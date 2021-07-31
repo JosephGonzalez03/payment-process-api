@@ -28,6 +28,3 @@ services:
       - loan-system-api
     ports:
       - "8092:8090"
-
-networks:
-  api-network:
