@@ -1,0 +1,6 @@
+type: object
+properties:
+  paymentReceipts:
+    type: array
+    items:
+      $ref: ./PaymentReceiptResponseBody.yaml

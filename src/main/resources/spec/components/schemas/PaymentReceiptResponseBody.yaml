@@ -1,0 +1,14 @@
+type: object
+properties:
+  loanName:
+    type: string
+  outstandingBalance:
+    type: number
+    multipleOf: 0.01
+    minimum: 0.00
+    example: 100.24
+  contribution:
+    type: number
+    multipleOf: 0.01
+    minimum: 0.00
+    example: 10.63

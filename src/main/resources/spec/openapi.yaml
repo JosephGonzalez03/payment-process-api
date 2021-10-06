@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: payment-process-api
+  version: 1.0.0
+  license:
+    name: MIT License
+    url: 'https://mit-license.org/'
+  description: |
+    # Introduction
+    This is a process API for processing loan payments. It integrates with loan-system-api.
+servers:
+  - url: 'http://localhost:8090/paymentms'
+    description: local
+  - url: 'http://apis-dev.nerd.com:443/paymentms'
+    description: development
+tags:
+  - name: payments
+    description: Operations related to making payments.
+  - name: payment_receipt_response_schema
+    x-displayName: Payment Receipt Response Schema
+    description: >
+      <SchemaDefinition
+      schemaRef="#/components/schemas/PaymentReceiptResponseBody" />
+  - name: payment_summary_response_schema
+    x-displayName: Payment Summary Response Schema
+    description: >
+      <SchemaDefinition
+      schemaRef="#/components/schemas/PaymentSummaryResponseBody" />
+x-tagGroups:
+  - name: General
+    tags:
+      - payments
+  - name: Schemas
+    tags:
+      - payment_receipt_response_schema
+      - payment_summary_response_schema
+paths:
+  /users/{userId}/paymentSummaries:
+    $ref: paths/users@{userId}@paymentSummaries.yaml

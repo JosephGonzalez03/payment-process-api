@@ -1,0 +1,43 @@
+get:
+  operationId: getAllPaymentSummaries
+  tags:
+    - payments
+  summary: Get all payment summaries
+  description: |
+    Gets all payment summaries from loan payments for a given user. Use FORECAST
+    operation to calculate future payment summaries and predict when loan payments 
+    will be finished.
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: operation
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - FORECAST
+    - name: orderBy
+      in: query
+      description: The order in which the loans will be paid
+      required: false
+      schema:
+        type: string
+        enum:
+          - NAME
+          - INTEREST_RATE
+          - OUTSTANDING_BALANCE
+          - CONTRIBUTION
+  responses:
+    '200':
+      description: Payment summaries found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/PaymentSummaryResponseBody.yaml
