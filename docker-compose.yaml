@@ -23,7 +23,7 @@ services:
     container_name: payment-process-api
     build:
       context: .
-    image: payment-process-api:0.0.1-SNAPSHOT
+    image: payment-process-api:1.0.0
     environment:
       LOAN_SYSTEM_API_HOST: "loan-system-api"
     depends_on:
