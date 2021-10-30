@@ -39,8 +39,16 @@ public class PaymentSummaryController {
 
         switch (operation) {
             case FORECAST:
-                ResponseEntity<Loan[]> orderedLoans = loanSystemApi.getForEntity("/users/{userId}/loans?orderBy={orderBy}", Loan[].class, userId, orderBy);
-                paymentSummaryResponseBodies = paymentService.getPaymentSummaries(Arrays.asList(orderedLoans.getBody()));
+                ResponseEntity<Loan[]> orderedLoans =
+                    loanSystemApi.getForEntity(
+                        "/users/{userId}/loans?orderBy={orderBy}",
+                        Loan[].class,
+                        userId,
+                        orderBy
+                    );
+                paymentSummaryResponseBodies = paymentService.getPaymentSummaries(
+                    Arrays.asList(orderedLoans.getBody())
+                );
                 break;
             default:
                 break;
