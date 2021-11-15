@@ -16,8 +16,6 @@ services:
     image: josephgonzalez03/loan-system-api:0.0.1-SNAPSHOT
     depends_on:
     - postgres-db
-    ports:
-    - "8090:8090"
 
   payment-process-api:
     container_name: payment-process-api
@@ -28,5 +26,14 @@ services:
       LOAN_SYSTEM_API_HOST: "loan-system-api"
     depends_on:
       - loan-system-api
+
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: nginx:1.17.10
+    depends_on:
+      - loan-system-api
+      - payment-process-api
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "8092:8090"
+      - "80:80"
