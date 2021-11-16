@@ -13,7 +13,7 @@ services:
 
   loan-system-api:
     container_name: loan-system-api
-    image: josephgonzalez03/loan-system-api:0.0.1-SNAPSHOT
+    image: josephgonzalez03/loan-system-api:development
     depends_on:
     - postgres-db
 
